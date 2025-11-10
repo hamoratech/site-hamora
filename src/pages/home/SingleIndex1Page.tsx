@@ -133,7 +133,6 @@ export const SingleIndex1Page: React.FC = () => {
         </div>
 
         {/* HEADER MOBILE (TOPO) */}
-        {/* HEADER MOBILE (TOPO) */}
         <div className="mobile-header mobile-header-6 d-block d-lg-none">
           <div className="container">
             <div className="col-12">
