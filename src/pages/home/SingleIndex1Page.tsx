@@ -25,7 +25,6 @@ export const SingleIndex1Page: React.FC = () => {
       ".mobile-sidebar"
     ) as HTMLElement | null;
 
-    // se o tema estiver usando alguma classe no overlay também, limpamos
     const overlay = document.querySelector(
       ".mobile-sidebar-overlay"
     ) as HTMLElement | null;
@@ -78,7 +77,7 @@ export const SingleIndex1Page: React.FC = () => {
         </div>
       </div>
 
-      {/* ===== (Opcional) Header simples para âncoras ===== */}
+      {/* ===== HEADER ===== */}
       <header>
         {/* HEADER DESKTOP */}
         <div
@@ -134,18 +133,25 @@ export const SingleIndex1Page: React.FC = () => {
         </div>
 
         {/* HEADER MOBILE (TOPO) */}
+        {/* HEADER MOBILE (TOPO) */}
         <div className="mobile-header mobile-header-6 d-block d-lg-none">
           <div className="container">
             <div className="col-12">
               <div className="mobile-header-elements">
+                {/* Logo à esquerda */}
                 <div className="mobile-logo">
                   <a href="#hero">
                     <img src="/img/logo/header-logo6.png" alt="" />
                   </a>
                 </div>
 
-                <div className="mobile-nav-icon ham-menu">
-                  <i className="fa-solid fa-bars-staggered" />
+                {/* Idioma + hambúrguer alinhados à direita */}
+                <div className="mobile-header-right">
+                  <LanguageSelect className="lang-select lang-select--mobile" />
+
+                  <div className="mobile-nav-icon ham-menu">
+                    <i className="fa-solid fa-bars-staggered" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -154,13 +160,11 @@ export const SingleIndex1Page: React.FC = () => {
 
         {/* MENU MOBILE (SIDEBAR) */}
         <div className="mobile-sidebar">
+          {/*
           <div className="logo-m">
-            <a href="#hero" onClick={handleMobileLinkClick}>
-              <img src="/img/logo/header-logo1.png" alt="" />
-            </a>
-          </div>
+                      <LanguageSelect className="lang-select lang-select--sidebar" />
 
-          <LanguageSelect className="lang-select lang-select--sidebar" />
+          </div> */}
 
           <div className="menu-close">
             <i className="fa-solid fa-xmark" />
@@ -193,7 +197,6 @@ export const SingleIndex1Page: React.FC = () => {
                   {t("header.about")}
                 </a>
               </li>
-              <li></li>
             </ul>
 
             <div className="mobile-button">
@@ -217,7 +220,6 @@ export const SingleIndex1Page: React.FC = () => {
       </header>
 
       {/* ===== HERO ===== */}
-
       <div className="hero-area6" id="hero">
         <div className="container">
           <div className="row align-items-center">
@@ -228,17 +230,13 @@ export const SingleIndex1Page: React.FC = () => {
                   data-aos="fade-left"
                   data-aos-duration="700"
                 >
-                  <img src="/img/icons/main-span6.png" alt="" /> Plataforma de
-                  gerenciamento de manutenção para hotéis
+                  <img src="/img/icons/main-span6.png" alt="" />{" "}
+                  {t("hero.badge")}
                 </span>
-                <h1 className="text-anime-style-3">
-                  Manutenção em dia, hóspedes sempre satisfeitos.
-                </h1>
+                <h1 className="text-anime-style-3">{t("hero.title")}</h1>
                 <div className="space16" />
                 <p data-aos="fade-right" data-aos-duration="700">
-                  A <strong>HAMORA</strong> centraliza e automatiza toda a
-                  manutenção do seu hotel em um só lugar, evitando imprevistos e
-                  garantindo uma experiência impecável para seus hóspedes.
+                  <strong>HAMORA</strong> {t("hero.descriptionRest")}
                 </p>
                 <div className="space30" />
                 <div
@@ -247,7 +245,7 @@ export const SingleIndex1Page: React.FC = () => {
                   data-aos-duration="900"
                 >
                   <a href="#cta" className="theme-btn8">
-                    <span className="tb8">Teste grátis por 30 dias</span>
+                    <span className="tb8">{t("hero.cta")}</span>
                     <span className="tb8-icon">
                       <span className="icon">
                         <i className="fa-solid fa-arrow-right" />
@@ -310,9 +308,7 @@ export const SingleIndex1Page: React.FC = () => {
             <div className="row">
               <div className="col-lg-12 m-auto text-center">
                 <div className="heading6">
-                  <h3 className="text-anime-style-3">
-                    Resultados da HAMORA em operações reais de hotelaria
-                  </h3>
+                  <h3 className="text-anime-style-3">{t("counters.title")}</h3>
                 </div>
               </div>
             </div>
@@ -327,7 +323,7 @@ export const SingleIndex1Page: React.FC = () => {
                   <h2>
                     <span className="counter">44.100</span>+
                   </h2>
-                  <p>Ocorrências de manutenção gerenciadas</p>
+                  <p>{t("counters.card1.text")}</p>
                 </div>
               </div>
 
@@ -340,7 +336,7 @@ export const SingleIndex1Page: React.FC = () => {
                   <h2>
                     <span className="counter">175.000</span>+
                   </h2>
-                  <p>Itens cadastrados e rastreados</p>
+                  <p>{t("counters.card2.text")}</p>
                 </div>
               </div>
 
@@ -353,7 +349,7 @@ export const SingleIndex1Page: React.FC = () => {
                   <h2>
                     <span className="counter">5.000</span>+
                   </h2>
-                  <p>Locais monitorados pelos clientes</p>
+                  <p>{t("counters.card3.text")}</p>
                 </div>
               </div>
 
@@ -366,7 +362,7 @@ export const SingleIndex1Page: React.FC = () => {
                   <h2>
                     <span className="counter">91</span>%
                   </h2>
-                  <p>Taxa média de O.S. concluídas</p>
+                  <p>{t("counters.card4.text")}</p>
                 </div>
               </div>
             </div>
@@ -375,7 +371,6 @@ export const SingleIndex1Page: React.FC = () => {
         {/* ===== COUNTERS AREA END ======= */}
 
         {/* ===== BENEFÍCIOS PRINCIPAIS ===== */}
-
         <div className="editing6 sp" id="editing">
           <div className="container">
             <div className="row">
@@ -384,21 +379,16 @@ export const SingleIndex1Page: React.FC = () => {
                   <span className="title">
                     <img src="/img/icons/span-image6.png" alt="" />
                   </span>
-                  <h2 className="text-anime-style-3">
-                    NOSSOS PRINCIPAIS BENEFÍCIOS{" "}
-                  </h2>
+                  <h2 className="text-anime-style-3">{t("benefits.title")}</h2>
                   <div className="space16" />
-                  <p>
-                    Centralize toda a manutenção em um único lugar, evitando
-                    surpresas desagradáveis para você e para seus hóspedes.
-                  </p>
+                  <p>{t("benefits.subtitle")}</p>
                 </div>
               </div>
             </div>
 
             <div className="space30" />
             <div className="row">
-              {/* 1. Poupe tempo e recursos */}
+              {/* 1 */}
               <div
                 className="col-lg-4 col-md-6"
                 data-aos="zoom-in-up"
@@ -410,18 +400,14 @@ export const SingleIndex1Page: React.FC = () => {
                   </div>
                   <div className="space16" />
                   <div className="heading6">
-                    <h4>Poupe tempo e recursos</h4>
+                    <h4>{t("benefits.item1.title")}</h4>
                     <div className="space16" />
-                    <p>
-                      Simplifique o processo de gerenciamento de manutenção em
-                      um único painel. Reduza custos desnecessários
-                      identificando e resolvendo problemas de forma mais rápida.
-                    </p>
+                    <p>{t("benefits.item1.text")}</p>
                   </div>
                 </div>
               </div>
 
-              {/* 2. Instalações sempre em ótimo estado */}
+              {/* 2 */}
               <div
                 className="col-lg-4 col-md-6"
                 data-aos="zoom-in-up"
@@ -433,18 +419,14 @@ export const SingleIndex1Page: React.FC = () => {
                   </div>
                   <div className="space16" />
                   <div className="heading6">
-                    <h4>Mantenha suas instalações sempre no melhor estado</h4>
+                    <h4>{t("benefits.item2.title")}</h4>
                     <div className="space16" />
-                    <p>
-                      Agende tarefas de manutenção preventiva para evitar falhas
-                      antes que aconteçam e acompanhe o estado de cada
-                      equipamento em tempo real.
-                    </p>
+                    <p>{t("benefits.item2.text")}</p>
                   </div>
                 </div>
               </div>
 
-              {/* 3. Satisfação dos hóspedes */}
+              {/* 3 */}
               <div
                 className="col-lg-4 col-md-6"
                 data-aos="zoom-in-up"
@@ -456,18 +438,14 @@ export const SingleIndex1Page: React.FC = () => {
                   </div>
                   <div className="space16" />
                   <div className="heading6">
-                    <h4>Garanta a satisfação dos seus hóspedes</h4>
+                    <h4>{t("benefits.item3.title")}</h4>
                     <div className="space16" />
-                    <p>
-                      Evite interrupções inesperadas durante a estadia, ofereça
-                      um ambiente confortável e seguro e fortaleça a reputação
-                      do seu hotel no mercado.
-                    </p>
+                    <p>{t("benefits.item3.text")}</p>
                   </div>
                 </div>
               </div>
 
-              {/* caixas extras – reforços de benefício, mesma estrutura */}
+              {/* 4 */}
               <div
                 className="col-lg-4 col-md-6"
                 data-aos="zoom-in-up"
@@ -479,16 +457,14 @@ export const SingleIndex1Page: React.FC = () => {
                   </div>
                   <div className="space16" />
                   <div className="heading6">
-                    <h4>Equipe mais produtiva</h4>
+                    <h4>{t("benefits.item4.title")}</h4>
                     <div className="space16" />
-                    <p>
-                      Organize responsabilidades, acompanhe o status das tarefas
-                      e dê visibilidade para toda a equipe de manutenção.
-                    </p>
+                    <p>{t("benefits.item4.text")}</p>
                   </div>
                 </div>
               </div>
 
+              {/* 5 */}
               <div
                 className="col-lg-4 col-md-6"
                 data-aos="zoom-in-up"
@@ -500,16 +476,14 @@ export const SingleIndex1Page: React.FC = () => {
                   </div>
                   <div className="space16" />
                   <div className="heading6">
-                    <h4>Gestão centralizada</h4>
+                    <h4>{t("benefits.item5.title")}</h4>
                     <div className="space16" />
-                    <p>
-                      Tenha uma visão completa das demandas do hotel, evitando
-                      planilhas soltas, quadros físicos e perda de informação.
-                    </p>
+                    <p>{t("benefits.item5.text")}</p>
                   </div>
                 </div>
               </div>
 
+              {/* 6 */}
               <div
                 className="col-lg-4 col-md-6"
                 data-aos="zoom-in-up"
@@ -521,12 +495,9 @@ export const SingleIndex1Page: React.FC = () => {
                   </div>
                   <div className="space16" />
                   <div className="heading6">
-                    <h4>Decisões com base em dados</h4>
+                    <h4>{t("benefits.item6.title")}</h4>
                     <div className="space16" />
-                    <p>
-                      Acompanhe históricos, entenda onde estão os maiores gastos
-                      e planeje investimentos de forma estratégica.
-                    </p>
+                    <p>{t("benefits.item6.text")}</p>
                   </div>
                 </div>
               </div>
@@ -534,10 +505,7 @@ export const SingleIndex1Page: React.FC = () => {
           </div>
         </div>
 
-        {/* ===== BENEFÍCIOS PRINCIPAIS END ======= */}
-
         {/* ===== RECURSOS PRINCIPAIS ======= */}
-
         <div className="features6 sp" id="feature">
           <div className="container">
             <div className="row">
@@ -546,7 +514,7 @@ export const SingleIndex1Page: React.FC = () => {
                   <span className="title">
                     <img src="/img/icons/span-image6.png" alt="" />
                   </span>
-                  <h2 className="text-anime-style-3">PRINCIPAIS RECURSOS</h2>
+                  <h2 className="text-anime-style-3">{t("features.title")}</h2>
                 </div>
               </div>
             </div>
@@ -570,17 +538,14 @@ export const SingleIndex1Page: React.FC = () => {
                     data-aos="fade-left"
                     data-aos-duration="700"
                   >
-                    Monitoramento em tempo real
+                    {t("features.monitoring.badge")}
                   </span>
                   <h3 className="text-anime-style-3">
-                    Veja o estado das suas instalações em um só painel
+                    {t("features.monitoring.title")}
                   </h3>
                   <div className="space16" />
                   <p data-aos="fade-left" data-aos-duration="900">
-                    Acompanhe todas as instalações e equipamentos do hotel em
-                    tempo real. Receba alertas sobre problemas emergenciais e
-                    tome decisões rápidas para evitar impacto na experiência do
-                    hóspede.
+                    {t("features.monitoring.text")}
                   </p>
                 </div>
               </div>
@@ -595,17 +560,14 @@ export const SingleIndex1Page: React.FC = () => {
                     data-aos="fade-right"
                     data-aos-duration="700"
                   >
-                    Agendamento de tarefas inteligente
+                    {t("features.scheduling.badge")}
                   </span>
                   <h3 className="text-anime-style-3">
-                    Planeje manutenções preventivas com antecedência
+                    {t("features.scheduling.title")}
                   </h3>
                   <div className="space16" />
                   <p data-aos="fade-right" data-aos-duration="900">
-                    Crie planos de manutenção preventiva e agende tarefas de
-                    forma eficiente. Evite falhas em equipamentos críticos ao
-                    manter tudo sob controle com lembretes e recorrências
-                    configuráveis.
+                    {t("features.scheduling.text")}
                   </p>
                 </div>
               </div>
@@ -621,7 +583,7 @@ export const SingleIndex1Page: React.FC = () => {
               </div>
             </div>
 
-            {/* Histórico de manutenção detalhado */}
+            {/* Histórico detalhado */}
             <div className="row align-items-center">
               <div className="col-lg-6">
                 <div
@@ -640,17 +602,14 @@ export const SingleIndex1Page: React.FC = () => {
                     data-aos="fade-left"
                     data-aos-duration="700"
                   >
-                    Histórico detalhado
+                    {t("features.history.badge")}
                   </span>
                   <h3 className="text-anime-style-3">
-                    Tenha o histórico completo de cada equipamento
+                    {t("features.history.title")}
                   </h3>
                   <div className="space16" />
                   <p data-aos="fade-left" data-aos-duration="900">
-                    Consulte o histórico completo de manutenção de cada
-                    equipamento e instalação. Use esses dados para fazer
-                    análises e decisões estratégicas sobre investimentos,
-                    substituições e prioridades.
+                    {t("features.history.text")}
                   </p>
                 </div>
               </div>
@@ -658,10 +617,7 @@ export const SingleIndex1Page: React.FC = () => {
           </div>
         </div>
 
-        {/* ===== RECURSOS PRINCIPAIS END ======= */}
-
         {/* ===== ÁREA DO CLIENTE / LOGOS ======= */}
-
         <div className="brands-area6 sp" id="brands">
           <div className="container">
             <div className="row align-items-center">
@@ -672,23 +628,18 @@ export const SingleIndex1Page: React.FC = () => {
                     data-aos="fade-left"
                     data-aos-duration="700"
                   >
-                    Hotéis que confiam na HAMORA
+                    {t("brands.badge")}
                   </span>
-                  <h2 className="text-anime-style-3">
-                    Junte-se aos hotéis que já profissionalizaram a manutenção
-                  </h2>
+                  <h2 className="text-anime-style-3">{t("brands.title")}</h2>
                   <div className="space16" />
                   <p data-aos="fade-left" data-aos-duration="900">
-                    Mostre aqui as logomarcas dos hotéis que já utilizam a
-                    HAMORA e reforçam a confiança na solução. A plataforma foi
-                    criada especialmente para o setor hoteleiro e evolui junto
-                    com as necessidades da hotelaria brasileira.
+                    {t("brands.text")}
                   </p>
                   <div className="space30" />
                   <div data-aos="fade-left" data-aos-duration="1000">
                     <a href="#contato" className="theme-btn8">
                       <span className="tb8">
-                        Quero fazer parte
+                        {t("brands.button")}
                         <span className="arrow">
                           <i className="fa-solid fa-arrow-right" />
                         </span>
@@ -701,11 +652,10 @@ export const SingleIndex1Page: React.FC = () => {
               <div className="col-lg-1" />
 
               <div className="col-lg-6">
-                {/* MANTIDO 100% IGUAL AO TEMPLATE ORIGINAL */}
                 <div className="apps-images">
                   <div className="image1">
                     <img src="/img/bg/apps5-shape-bg.png" alt="" />
-                    <div className="dot"></div>
+                    <div className="dot" />
                   </div>
                   <div className="image2">
                     <img src="/img/others/apps5.png" alt="" />
@@ -716,19 +666,14 @@ export const SingleIndex1Page: React.FC = () => {
           </div>
         </div>
 
-        {/* ===== ÁREA DO CLIENTE / LOGOS END ======= */}
-
-        {/* ===== SOBRE A HAMORA (usando FAQ) ======= */}
-
+        {/* ===== SOBRE A HAMORA (FAQ) ======= */}
         <div className="faq6 sp" id="faq">
           <div className="container">
             <div className="row">
               <div className="col-lg-10 m-auto text-center">
                 <div className="heading6">
-                  <span className="span">Sobre a HAMORA</span>
-                  <h2 className="text-anime-style-3">
-                    Inovação em manutenção para a hotelaria brasileira
-                  </h2>
+                  <span className="span">{t("about.badge")}</span>
+                  <h2 className="text-anime-style-3">{t("about.title")}</h2>
                 </div>
 
                 <div className="space40" />
@@ -749,7 +694,7 @@ export const SingleIndex1Page: React.FC = () => {
                         aria-expanded="true"
                         aria-controls="collapseOne"
                       >
-                        Quem é a HAMORA?
+                        {t("about.who.question")}
                       </button>
                     </h2>
                     <div
@@ -759,20 +704,10 @@ export const SingleIndex1Page: React.FC = () => {
                       data-bs-parent="#accordionExample"
                     >
                       <div className="accordion-body">
-                        HAMORA é uma turistech alagoana criada com o propósito
-                        de levar inovação e tecnologia para o setor hoteleiro.
-                        Em uma região que é destino de férias de milhares de
-                        pessoas, fazia todo sentido nascer uma tecnologia local
-                        para impulsionar um setor tão promissor.
+                        {t("about.who.part1")}
                         <br />
-                        <br />A startup participou de diversos desafios e
-                        programas de inovação, como InovAtiva, Turistech Hub,
-                        Startup NE, entre outros. Em 2022, foi eleita a{" "}
-                        <strong>startup do ano</strong> pela Secretaria de
-                        Tecnologia do Estado de Alagoas e finalista do Demoday
-                        realizado pela mesma. Em 2023, ficou em{" "}
-                        <strong>2º lugar</strong> no programa de inovação do BNB
-                        (VUMBORA), além de outros reconhecimentos.
+                        <br />
+                        {t("about.who.part2")}
                       </div>
                     </div>
                   </div>
@@ -792,7 +727,7 @@ export const SingleIndex1Page: React.FC = () => {
                         aria-expanded="false"
                         aria-controls="collapseTwo"
                       >
-                        Visão da HAMORA
+                        {t("about.vision.question")}
                       </button>
                     </h2>
                     <div
@@ -802,8 +737,7 @@ export const SingleIndex1Page: React.FC = () => {
                       data-bs-parent="#accordionExample"
                     >
                       <div className="accordion-body">
-                        <strong>VISÃO:</strong> Ser a principal ferramenta de
-                        gerenciamento da hotelaria do Brasil.
+                        {t("about.vision.answer")}
                       </div>
                     </div>
                   </div>
@@ -823,7 +757,7 @@ export const SingleIndex1Page: React.FC = () => {
                         aria-expanded="false"
                         aria-controls="collapseThree"
                       >
-                        Missão da HAMORA
+                        {t("about.mission.question")}
                       </button>
                     </h2>
                     <div
@@ -833,9 +767,7 @@ export const SingleIndex1Page: React.FC = () => {
                       data-bs-parent="#accordionExample"
                     >
                       <div className="accordion-body">
-                        <strong>MISSÃO:</strong> Existimos para que a hotelaria
-                        brasileira seja referência mundial na gestão da
-                        manutenção.
+                        {t("about.mission.answer")}
                       </div>
                     </div>
                   </div>
@@ -855,7 +787,7 @@ export const SingleIndex1Page: React.FC = () => {
                         aria-expanded="false"
                         aria-controls="collapseFour"
                       >
-                        Valores da HAMORA
+                        {t("about.values.question")}
                       </button>
                     </h2>
                     <div
@@ -865,10 +797,7 @@ export const SingleIndex1Page: React.FC = () => {
                       data-bs-parent="#accordionExample"
                     >
                       <div className="accordion-body">
-                        <strong>VALORES:</strong> Simplicidade, Empatia,
-                        Confiança, Inovação e Hospitalidade. Esses princípios
-                        norteiam a forma como construímos produto, atendemos
-                        clientes e nos relacionamos com o mercado.
+                        {t("about.values.answer")}
                       </div>
                     </div>
                   </div>
@@ -877,31 +806,22 @@ export const SingleIndex1Page: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* ===== SOBRE A HAMORA (usando FAQ) END ======= */}
       </div>
 
       {/* ===== CTA FINAL ======= */}
-
       <div className="cta6" id="cta">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5">
               <div className="heading6-w">
-                <span className="span">Comece hoje</span>
-                <h2>Transforme a manutenção do seu hotel com a HAMORA</h2>
+                <span className="span">{t("cta.badge")}</span>
+                <h2>{t("cta.title")}</h2>
                 <div className="space16" />
-                <p>
-                  Experimente nossa plataforma de gerenciamento de manutenção
-                  gratuitamente por <strong>30 dias</strong> e descubra como é
-                  simples elevar a qualidade das suas instalações e a satisfação
-                  dos seus hóspedes. Não perca tempo: junte-se aos hotéis que já
-                  modernizaram a gestão de manutenção.
-                </p>
+                <p>{t("cta.text")}</p>
                 <div className="space30" />
                 <a href="#contato" className="theme-btn8">
                   <span className="tb8">
-                    Quero testar por 30 dias
+                    {t("cta.button")}
                     <span className="arrow">
                       <i className="fa-solid fa-arrow-right" />
                     </span>
@@ -924,61 +844,67 @@ export const SingleIndex1Page: React.FC = () => {
         </div>
       </div>
 
-      {/* ===== CTA FINAL END ======= */}
-
       {/* ===== FOOTER AREA START ======= */}
-
       <div className="footer6 _relative">
         <div className="container bg">
           <div className="row">
-            {/* COLUNA ESQUERDA - FORMULÁRIO / CONTATO */}
+            {/* FORM / CONTATO */}
             <div className="col-lg-5">
               <div className="subscribe-area" id="contato">
-                <h5>Preencha seus dados e fale com a HAMORA</h5>
-                <p>
-                  Conte pra gente sobre o seu hotel e como a manutenção é feita
-                  hoje. Nosso time entra em contato para entender sua realidade
-                  e mostrar como a plataforma pode ajudar.
-                </p>
+                <h5>{t("form.title")}</h5>
+                <p>{t("form.description")}</p>
 
                 <form className="multi-input-form" action="#" method="post">
                   <div className="input-row">
-                    <input type="text" name="firstName" placeholder="Nome" />
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder={t("form.firstName")}
+                    />
                     <input
                       type="text"
                       name="lastName"
-                      placeholder="Sobrenome"
+                      placeholder={t("form.lastName")}
                     />
                   </div>
                   <div className="input-row">
-                    <input type="tel" name="phone" placeholder="Telefone" />
-                    <input type="email" name="email" placeholder="E-mail" />
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder={t("form.phone")}
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder={t("form.email")}
+                    />
                   </div>
                   <div className="input-row">
                     <input
                       type="text"
                       name="company"
-                      placeholder="Nome da empresa"
+                      placeholder={t("form.company")}
                     />
-                    <input type="text" name="role" placeholder="Cargo" />
+                    <input
+                      type="text"
+                      name="role"
+                      placeholder={t("form.role")}
+                    />
                   </div>
                   <div className="input-row">
                     <input
                       type="text"
                       name="teamSize"
-                      placeholder="Tamanho da equipe"
+                      placeholder={t("form.teamSize")}
                     />
                   </div>
                   <div className="input-row">
-                    <textarea
-                      name="need"
-                      placeholder="Descreva sua necessidade"
-                    />
+                    <textarea name="need" placeholder={t("form.need")} />
                   </div>
                   <div className="button">
                     <button type="submit" className="theme-btn9">
                       <span className="tb8">
-                        Enviar mensagem
+                        {t("form.button")}
                         <span className="arrow">
                           <i className="fa-solid fa-arrow-right" />
                         </span>
@@ -992,19 +918,19 @@ export const SingleIndex1Page: React.FC = () => {
             {/* COLUNA 2 */}
             <div className="col-lg col-md-6 col-12">
               <div className="single-footer-items">
-                <h3>Recursos</h3>
+                <h3>{t("footer.resources.title")}</h3>
                 <ul className="menu-list">
                   <li>
-                    <a href="#brands">Hotéis parceiros</a>
+                    <a href="#brands">{t("footer.resources.partners")}</a>
                   </li>
                   <li>
-                    <a href="#faq">Sobre a HAMORA</a>
+                    <a href="#faq">{t("footer.resources.about")}</a>
                   </li>
                   <li>
-                    <a href="#feature">Recursos da plataforma</a>
+                    <a href="#feature">{t("footer.resources.features")}</a>
                   </li>
                   <li>
-                    <a href="#editing">Benefícios</a>
+                    <a href="#editing">{t("footer.resources.benefits")}</a>
                   </li>
                 </ul>
               </div>
@@ -1013,14 +939,13 @@ export const SingleIndex1Page: React.FC = () => {
             {/* COLUNA 3 */}
             <div className="col-lg col-md-6 col-12">
               <div className="single-footer-items">
-                <h3>Empresa</h3>
+                <h3>{t("footer.company.title")}</h3>
                 <ul className="menu-list">
-                  <li></li>
                   <li>
-                    <a href="#contato">Fale com o time</a>
+                    <a href="#contato">{t("footer.company.contactTeam")}</a>
                   </li>
                   <li>
-                    <a href="#faq">Nossa história</a>
+                    <a href="#faq">{t("footer.company.story")}</a>
                   </li>
                 </ul>
               </div>
@@ -1029,26 +954,33 @@ export const SingleIndex1Page: React.FC = () => {
             {/* COLUNA 4 - REDES SOCIAIS */}
             <div className="col-lg-3 col-md-6 col-12">
               <div className="single-footer-items">
-                <h3>Redes sociais</h3>
+                <h3>{t("footer.social.title")}</h3>
                 <ul className="social-icons">
                   <li>
-                    <a href="#">
+                    <a
+                      href="https://www.linkedin.com/company/hamora-tech/posts/?feedView=all"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <i className="fa-brands fa-linkedin-in" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a
+                      href="https://www.instagram.com/hamoratech/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <i className="fa-brands fa-instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i className="fa-brands fa-youtube" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fa-brands fa-x-twitter" />
+                    <a
+                      href="https://wa.me/+5582996832677"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa-brands fa-whatsapp" />
                     </a>
                   </li>
                 </ul>
@@ -1075,18 +1007,16 @@ export const SingleIndex1Page: React.FC = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    © 2024 HAMORA
+                    {t("footer.copyright")}
                   </a>
-                  <a href="#">Política de privacidade</a>
-                  <a href="#">Termos de uso</a>
+                  <a href="#">{t("footer.privacy")}</a>
+                  <a href="#">{t("footer.terms")}</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* ===== FOOTER AREA END ======= */}
-
       {/* ===== FOOTER AREA END ======= */}
     </>
   );

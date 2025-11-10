@@ -99,8 +99,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: transparent;
   color: #fff;
-  font-size: 12px;
-  padding: 8px 16px;
+  font-size: 16px;
+  padding: 6px 12px;
   outline: none;
   cursor: pointer;
 
@@ -224,7 +224,7 @@ body {
 /* topo mobile */
 .mobile-header .lang-select--mobile {
   margin: 0 8px;
-  font-size: 11px;
+  font-size: 16px;
   padding: 3px 20px 3px 8px;
 } /* HEADER MOBILE ROXO */
 .mobile-header-6 {
@@ -239,10 +239,93 @@ body {
 }
 
 /* dentro do sidebar */
+/* SELECT DE IDIOMA DENTRO DA SIDEBAR MOBILE */
+
+/* SELECT DE IDIOMA DENTRO DA SIDEBAR MOBILE – MAIOR E MAIS LARGO */
 .mobile-sidebar .lang-select--sidebar {
+  display: block;
   width: 100%;
-  margin: 10px 0 20px;
-  font-size: 13px;
+  max-width: 100%;
+
+  margin: 18px 0 24px;
+
+  padding: 12px 18px; /* AUMENTA ALTURA DO CAMPO */
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #6534f4;
+
+  font-size: 16px; /* TEXTO MAIOR */
+  font-weight: 500;
+  line-height: 1.4;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: linear-gradient(
+    135deg,
+    rgba(101, 52, 244, 0.08),
+    rgba(143, 0, 255, 0.12)
+  );
+  background-clip: padding-box;
+}
+
+.lang-select {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #fff;
+  font-size: 15px; /* antes estava 16, deixa como preferir */
+  padding: 8px 14px;
+  outline: none;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* OPÇÕES DENTRO DO SELECT – DEIXAR LISTA MAIS CONFORTÁVEL */
+.mobile-sidebar .lang-select--sidebar option {
+  font-size: 16px;
+  padding: 6px 10px;
+}
+
+/* opcional: cursor e hover mais bonitinhos */
+.mobile-sidebar .lang-select--sidebar:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.mobile-sidebar .lang-select--sidebar:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6),
+    0 0 0 4px rgba(101, 52, 244, 0.7);
+}
+
+/* container do topo mobile */
+.mobile-header .mobile-header-elements {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo à esquerda, bloco (select + menu) à direita */
+}
+
+/* bloco da direita (select + ícone) */
+.mobile-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* espaço entre o select e o ícone */
+}
+
+/* já existia, só garantindo que o select do topo fique ok */
+.mobile-header .lang-select--mobile {
+  margin: 0 4px;
+  font-size: 14px;
+  padding: 4px 14px 4px 8px;
 }
 
 .multi-input-form {
@@ -294,5 +377,36 @@ body {
   .footer6 .coppyright {
     text-align: left;
     margin-top: 10px;
+  }
+}
+
+/* Reativar a animação do ponto girando na área de clientes também no mobile */
+.brands-area6 .apps-images .image1 .dot {
+  display: block !important;
+}
+
+/* Animação menor para o pontinho girar dentro da imagem em telas pequenas */
+@keyframes orbit-small {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(120px);
+    box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.1),
+      0 0 30px 30px rgba(255, 255, 255, 0.06),
+      0 0 40px 40px rgba(255, 255, 255, 0.03);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(120px);
+    box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.1),
+      0 0 30px 30px rgba(255, 255, 255, 0.06),
+      0 0 40px 40px rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* Em telas até 991px (tablet + mobile), reativa o pontinho e usa a animação menor */
+@media (max-width: 991px) {
+  .brands-area6 .apps-images .image1 .dot {
+    display: block !important; /* reativa o ponto */
+    right: 50%; /* centraliza melhor no círculo */
+    margin-right: 0;
+    animation: orbit-small 6s linear infinite;
   }
 }
