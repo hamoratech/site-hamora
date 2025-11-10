@@ -1,0 +1,298 @@
+/* 1) não deixar a página ter scroll horizontal */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2) esconder COMPLETAMENTE o menu mobile no desktop */
+@media (min-width: 992px) {
+  .mobile-header,
+  .mobile-sidebar,
+  .mobile-sidebar-overlay {
+    display: none !important;
+  }
+}
+
+/* 3) ajustar o sidebar mobile para não "quebrar" o layout */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  /* IMPORTANTE: fixar na DIREITA */
+  right: 0;
+  left: auto !important;
+  width: 80%;
+  max-width: 420px;
+  border-radius: 16px 0 0 16px;
+  height: 100vh;
+  padding: 40px 30px;
+  box-sizing: border-box;
+  background: #021334;
+  overflow-y: auto;
+  transform: translateX(100%);
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* 4) quando o JS do template ativar o menu (classe mobile-menu-active) */
+.mobile-sidebar.mobile-menu-active {
+  transform: translateX(0);
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 5) overlay por trás do menu */
+.mobile-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* quando o menu está ativo, mostra o overlay */
+.mobile-sidebar.mobile-menu-active + .mobile-sidebar-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* BOTÃO "Fale com a gente" na SIDEBAR MOBILE */
+.btn-contact-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 10px 26px;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #ff7ad9, #8f00ff);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3), 0 0 18px rgba(143, 0, 255, 0.4);
+
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease,
+    opacity 0.16s ease;
+}
+
+/* hover no mobile também (vale pra telas grandes se o menu abrir) */
+.mobile-sidebar .mobile-button .header-btn23:hover {
+  background: #f3ecff;
+  color: #4b2ac7;
+}
+
+/* estilo padrão do select de idioma */
+.lang-select {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 16px;
+  outline: none;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.lang-select option {
+  color: #000;
+}
+
+/* no header desktop */
+/* BOTÃO "Fale com a gente" no HEADER DESKTOP */
+.header-area6 .header2-buttons .btn-contact-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 5px 12px;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #ff7ad9, #8f00ff);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3), 0 0 18px rgba(143, 0, 255, 0.4);
+
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease,
+    opacity 0.16s ease;
+}
+
+/* hover no desktop */
+.header-area6 .header2-buttons .header-btn23:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  background: #f3ecff;
+  color: #4b2ac7;
+}
+
+/* “brilho” suave passando no botão */
+.btn-contact-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 40%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.4s ease-out;
+}
+
+/* conteúdo do botão (texto + ícone) acima do brilho */
+.btn-contact-cta__label,
+.btn-contact-cta__icon {
+  position: relative;
+  z-index: 1;
+}
+
+/* ícone redondo */
+.btn-contact-cta__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.btn-contact-cta__icon i {
+  font-size: 13px;
+}
+
+/* HOVER – desktop */
+.btn-contact-cta:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 24px rgba(143, 0, 255, 0.55);
+}
+
+.btn-contact-cta:hover::before {
+  transform: translateX(10%);
+}
+
+/* HEADER DESKTOP – garante alinhamento bonito no header */
+.header-area6 .header2-buttons .btn-contact-cta {
+  margin-left: 8px;
+}
+
+/* SIDEBAR MOBILE – botão ocupa a largura inteira */
+.mobile-sidebar .mobile-button .btn-contact-cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* em telas muito pequenas, deixa o botão um pouco menor */
+@media (max-width: 380px) {
+  .btn-contact-cta {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+}
+
+/* topo mobile */
+.mobile-header .lang-select--mobile {
+  margin: 0 8px;
+  font-size: 11px;
+  padding: 3px 20px 3px 8px;
+} /* HEADER MOBILE ROXO */
+.mobile-header-6 {
+  background: linear-gradient(135deg, #6534f4, #8f00ff);
+}
+
+/* ícone de menu e textos em branco */
+.mobile-header-6 .mobile-header-elements,
+.mobile-header-6 .mobile-header-elements a,
+.mobile-header-6 .mobile-nav-icon i {
+  color: #ffffff;
+}
+
+/* dentro do sidebar */
+.mobile-sidebar .lang-select--sidebar {
+  width: 100%;
+  margin: 10px 0 20px;
+  font-size: 13px;
+}
+
+.multi-input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.multi-input-form .input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.multi-input-form input,
+.multi-input-form textarea {
+  flex: 1 1 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-size: 14px;
+}
+
+.multi-input-form input::placeholder,
+.multi-input-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 768px) {
+  .multi-input-form .input-row input {
+    flex: 1 1 calc(50% - 5px);
+  }
+}
+
+.multi-input-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* espaçamento entre colunas do footer em telas menores */
+.footer6 .row > [class*="col-"] {
+  margin-bottom: 20px;
+}
+
+/* alinha melhor o texto de copyright no mobile */
+@media (max-width: 767px) {
+  .footer6 .coppyright {
+    text-align: left;
+    margin-top: 10px;
+  }
+}
