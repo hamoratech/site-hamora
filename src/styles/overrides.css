@@ -410,3 +410,379 @@ body {
     animation: orbit-small 6s linear infinite;
   }
 }
+
+/* MODAL DE SUCESSO DO FORMULÁRIO */
+.form-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 8, 36, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.form-modal {
+  position: relative;
+  background: #050b2a;
+  border-radius: 20px;
+  padding: 28px 24px 22px;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(143, 0, 255, 0.7);
+  text-align: center;
+  animation: form-scale 0.2s ease-out;
+}
+
+.form-modal h3 {
+  margin-top: 16px;
+  margin-bottom: 4px;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.form-modal p {
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: #c9d2ff;
+}
+
+.form-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ÍCONE / CHECKMARK ANIMADO */
+.form-modal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark {
+  width: 72px;
+  height: 72px;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 3;
+  stroke: #4ade80;
+  fill: none;
+  animation: form-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  stroke-width: 3;
+  stroke: #4ade80;
+  fill: none;
+  animation: form-stroke 0.4s 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+@keyframes form-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes form-scale {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Botão desabilitado enquanto envia */
+.theme-btn9[disabled] {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* fundo geral da página de contato */
+.contact-page {
+  background: radial-gradient(
+    circle at top,
+    #1d0b5c 0,
+    #020517 55%,
+    #020313 100%
+  );
+  color: #ffffff;
+}
+
+/* HERO da página de contato com a mesma pegada do hero principal */
+.contact-hero {
+  position: relative;
+  color: #ffffff;
+  background-image: linear-gradient(
+      135deg,
+      rgba(101, 52, 244, 0.94),
+      rgba(5, 2, 35, 0.98)
+    ),
+    url("/img/bg/hero6-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.contact-hero .heading6-w h2 {
+  max-width: 640px;
+}
+
+/* deixa o "Fale com o time HAMORA" mais destacado */
+.contact-hero .span2 {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.12);
+  color: #fde68a;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* ========= PÁGINA DE CONTATO ========= */
+
+/* fundo geral da página de contato */
+.contact-page {
+  background: radial-gradient(
+    circle at top,
+    #1d0b5c 0,
+    #020517 55%,
+    #020313 100%
+  );
+  color: #ffffff;
+}
+
+/* hero roxo com estilo parecido com outras seções */
+.contact-hero {
+  background: linear-gradient(135deg, #6534f4, #8f00ff);
+  color: #ffffff;
+}
+
+.contact-hero .heading6-w h2 {
+  max-width: 640px;
+}
+
+/* bloco principal da página */
+.contact-content {
+  background: transparent;
+}
+
+/* cards genéricos da página de contato */
+.contact-card {
+  background: rgba(5, 11, 42, 0.96);
+  border-radius: 18px;
+  padding: 22px 20px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(143, 0, 255, 0.5);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+}
+
+.contact-card h3,
+.contact-card h4 {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  color: #c9d2ff;
+  font-size: 14px;
+}
+
+/* lista de módulos */
+.contact-modules-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-modules-list li {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(9, 16, 60, 0.9);
+}
+
+.contact-modules-list li strong {
+  display: block;
+  font-size: 14px;
+  color: #f5f3ff;
+}
+
+.contact-modules-list li span {
+  display: block;
+  font-size: 13px;
+  color: #aeb8ff;
+}
+
+/* botões de contato rápido */
+.contact-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.contact-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.contact-btn__icon i {
+  font-size: 14px;
+}
+
+/* WhatsApp verde */
+.contact-btn--whatsapp {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+/* Telegram azul */
+.contact-btn--telegram {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
+  opacity: 0.95;
+}
+
+/* card do formulário um pouco maior */
+.contact-card--form {
+  padding: 26px 22px 24px;
+}
+
+.contact-card--form h3 {
+  margin-bottom: 8px;
+}
+
+/* responsividade básica */
+@media (max-width: 991px) {
+  .contact-page {
+    background: radial-gradient(
+      circle at top,
+      #1d0b5c 0,
+      #020517 55%,
+      #020313 100%
+    );
+  }
+
+  .contact-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Botão "voltar" na página de contato */
+.contact-hero-actions {
+  margin-top: 20px;
+}
+
+.contact-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+
+  background: rgba(3, 8, 36, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.contact-back-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.contact-back-btn__icon i {
+  font-size: 12px;
+}
+
+.contact-back-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  background: rgba(3, 8, 36, 0.7);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== AJUSTES PARA PÁGINA DE CONTATO ===== */
+
+/* Deixar o hero mais discreto: menos altura, sem gradient forte, sem imagem grande */
+.contact-page .contact-hero {
+  padding-top: 32px;
+  padding-bottom: 16px;
+
+  background: transparent; /* tira o destaque visual */
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Título e texto menores e mais "suaves" */
+.contact-page .contact-hero .heading6-w h2 {
+  font-size: 22px;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.contact-page .contact-hero .heading6-w p {
+  font-size: 14px;
+  max-width: 520px;
+  opacity: 0.85;
+}
+
+/* Se tiver imagens de hero na contact-page, escondemos pra tirar o peso visual */
+.contact-page .contact-hero .images-all,
+.contact-page .contact-hero .contact-hero-images {
+  display: none;
+}

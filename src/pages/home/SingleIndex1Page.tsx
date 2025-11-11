@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useI18n } from "../../i18n/I18nProvider";
 import LanguageSelect from "../../components/LanguageSelect";
+import { Link } from "react-router-dom";
 
 type WindowWithAOS = Window & {
   AOS?: {
@@ -10,6 +11,43 @@ type WindowWithAOS = Window & {
 
 export const SingleIndex1Page: React.FC = () => {
   const { t } = useI18n();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+
+      const response = await fetch("https://formspree.io/f/xqawkeoj", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (response.ok) {
+        form.reset();
+        setShowSuccessModal(true);
+      } else {
+        alert("Não foi possível enviar. Tente novamente em instantes.");
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      alert(
+        "Não foi possível enviar. Verifique sua conexão e tente novamente."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -117,14 +155,17 @@ export const SingleIndex1Page: React.FC = () => {
                   <div className="header2-buttons">
                     <LanguageSelect className="lang-select" />
 
-                    <a href="#contato" className="header-btn23 btn-contact-cta">
+                    <Link
+                      to="/contato"
+                      className="header-btn23 btn-contact-cta"
+                    >
                       <span className="btn-contact-cta__label">
                         {t("header.contactCta")}
                       </span>
                       <span className="btn-contact-cta__icon">
                         <i className="fa-solid fa-message" />
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -199,8 +240,8 @@ export const SingleIndex1Page: React.FC = () => {
             </ul>
 
             <div className="mobile-button">
-              <a
-                href="#contato"
+              <Link
+                to="/contato"
                 className="header-btn23 btn-contact-cta"
                 onClick={handleMobileLinkClick}
               >
@@ -210,7 +251,7 @@ export const SingleIndex1Page: React.FC = () => {
                 <span className="btn-contact-cta__icon">
                   <i className="fa-solid fa-message" />
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -243,14 +284,14 @@ export const SingleIndex1Page: React.FC = () => {
                   data-aos="fade-right"
                   data-aos-duration="900"
                 >
-                  <a href="#cta" className="theme-btn8">
-                    <span className="tb8">{t("hero.cta")}</span>
-                    <span className="tb8-icon">
-                      <span className="icon">
+                  <Link to="/contato" className="theme-btn8">
+                    <span className="tb8">
+                      Quero testar por 30 dias
+                      <span className="arrow">
                         <i className="fa-solid fa-arrow-right" />
                       </span>
                     </span>
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="master-card master-card6">
@@ -636,14 +677,14 @@ export const SingleIndex1Page: React.FC = () => {
                   </p>
                   <div className="space30" />
                   <div data-aos="fade-left" data-aos-duration="1000">
-                    <a href="#contato" className="theme-btn8">
+                    <Link to="/contato" className="theme-btn8">
                       <span className="tb8">
-                        {t("brands.button")}
+                        Quero fazer parte
                         <span className="arrow">
                           <i className="fa-solid fa-arrow-right" />
                         </span>
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -818,14 +859,14 @@ export const SingleIndex1Page: React.FC = () => {
                 <div className="space16" />
                 <p>{t("cta.text")}</p>
                 <div className="space30" />
-                <a href="#contato" className="theme-btn8">
+                <Link to="/contato" className="theme-btn8">
                   <span className="tb8">
-                    {t("cta.button")}
+                    Quero testar por 30 dias
                     <span className="arrow">
                       <i className="fa-solid fa-arrow-right" />
                     </span>
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-lg-1" />
@@ -853,7 +894,13 @@ export const SingleIndex1Page: React.FC = () => {
                 <h5>{t("form.title")}</h5>
                 <p>{t("form.description")}</p>
 
-                <form className="multi-input-form" action="#" method="post">
+                <form className="multi-input-form" onSubmit={handleFormSubmit}>
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="Novo contato pelo site HAMORA"
+                  />
+
                   <div className="input-row">
                     <input
                       type="text"
@@ -901,9 +948,13 @@ export const SingleIndex1Page: React.FC = () => {
                     <textarea name="need" placeholder={t("form.need")} />
                   </div>
                   <div className="button">
-                    <button type="submit" className="theme-btn9">
+                    <button
+                      type="submit"
+                      className="theme-btn9"
+                      disabled={isSubmitting}
+                    >
                       <span className="tb8">
-                        {t("form.button")}
+                        {isSubmitting ? "Enviando..." : "Enviar mensagem"}
                         <span className="arrow">
                           <i className="fa-solid fa-arrow-right" />
                         </span>
@@ -1017,6 +1068,52 @@ export const SingleIndex1Page: React.FC = () => {
         </div>
       </div>
       {/* ===== FOOTER AREA END ======= */}
+
+      {/* MODAL DE SUCESSO DO FORMULÁRIO */}
+      {showSuccessModal && (
+        <div
+          className="form-modal-backdrop"
+          onClick={() => setShowSuccessModal(false)}
+        >
+          <div className="form-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="form-modal-close"
+              onClick={() => setShowSuccessModal(false)}
+            >
+              <i className="fa-solid fa-xmark" />
+            </button>
+
+            <div className="form-modal-icon">
+              <svg viewBox="0 0 52 52" className="checkmark" aria-hidden="true">
+                <circle
+                  className="checkmark-circle"
+                  cx="26"
+                  cy="26"
+                  r="25"
+                  fill="none"
+                />
+                <path
+                  className="checkmark-check"
+                  fill="none"
+                  d="M14 27l7 7 17-17"
+                />
+              </svg>
+            </div>
+
+            <h3>Obrigado!</h3>
+            <p>Logo mais entraremos em contato.</p>
+
+            <button
+              type="button"
+              className="theme-btn8"
+              onClick={() => setShowSuccessModal(false)}
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
